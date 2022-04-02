@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage("https://i.ibb.co/Htb0Htq/login-bg.jpg"),
+                image: AssetImage("lib/images/login-bg.jpg"),
                 fit: BoxFit.cover
               )
             ),
