@@ -22,6 +22,7 @@ class _ShopingListScreenState extends State<ShopingListScreen> {
     });
   }
 
+
   Widget _buildRow(int idx) {
     return Card(
         child: ListTile(
