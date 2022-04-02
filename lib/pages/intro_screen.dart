@@ -4,8 +4,6 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:monkey/pages/login_screen.dart';
 
-import '../main_screen.dart';
-
 class IntroScreen extends StatefulWidget {
   const IntroScreen({Key? key}) : super(key: key);
 
@@ -22,7 +20,7 @@ class IntroScreenState extends State<IntroScreen> {
 
     slides.add(
       Slide(
-        title: "Finances",
+        title: "Finances.",
         description: "Get the big picture on all your money.",
         pathImage: "lib/images/wallet.png",
         backgroundColor: const Color(0xffAF3B6E),
@@ -31,14 +29,14 @@ class IntroScreenState extends State<IntroScreen> {
     slides.add(
       Slide(
         title: "Shopping Lists.",
-        description: "Make your shopping experience easier with Our Shopping Lists..",
+        description: "Make your shopping experience easier with our shopping lists..",
         pathImage: "lib/images/list.png",
         backgroundColor: const Color(0xff424651),
       ),
     );
     slides.add(
       Slide(
-        title: "Family",
+        title: "Family.",
         description:
         "Budget together with your family, track their expenses and set goals.",
         pathImage: "lib/images/family.png",
