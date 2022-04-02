@@ -26,6 +26,7 @@ class DatabaseService {
   Future createCategory(String name) {
     final docCategory = FirebaseFirestore.instance.collection(dbCategory).doc();
     final category = Category(docCategory.id, name);
+    
     final json = category.toJson();
     return docCategory.set(json);
   }
