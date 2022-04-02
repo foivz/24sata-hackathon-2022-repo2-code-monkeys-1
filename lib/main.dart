@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:monkey/pages/intro_screen.dart';
 import 'pages/login_screen.dart';
-//komentar za testirat
-//test
+import 'util/utility.dart';
+
 void main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await Utility.refreshData();
   runApp(const MyApp());
 }
 
@@ -18,16 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App',
-      theme: ThemeData(
-        textTheme: GoogleFonts.ubuntuTextTheme(
-          Theme.of(context).textTheme
+        title: 'App',
+        theme: ThemeData(
+          textTheme: GoogleFonts.ubuntuTextTheme(
+            Theme.of(context).textTheme
+          ),
+          primarySwatch: Colors.blue,
         ),
-        primarySwatch: Colors.blue,
-
-      ),
       home: const IntroScreen()
     );
   }
 }
-

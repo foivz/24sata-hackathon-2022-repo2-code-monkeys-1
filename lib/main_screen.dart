@@ -1,8 +1,13 @@
+import 'package:monkey/database/database.dart';
+import 'package:monkey/models/category.dart';
 import 'package:monkey/pages/analitics_screen.dart';
 import 'package:monkey/pages/budget_screen.dart';
 import 'package:monkey/widgets/action_button.dart';
 import 'package:monkey/widgets/screen_select.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/profile_drawer.dart';
+
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
@@ -15,10 +20,10 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
         child: Scaffold(
+          drawer: const SeparatedDrawer(),
             appBar: AppBar(
               backgroundColor: Colors.grey[200],
               foregroundColor: Colors.grey[600],
-              leading: const Icon(Icons.person),
               elevation: 0,
               centerTitle: true,
               actions: <Widget>[

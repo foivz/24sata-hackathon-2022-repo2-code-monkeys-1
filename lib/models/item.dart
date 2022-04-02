@@ -1,11 +1,32 @@
 // iz item liste
 import 'package:monkey/models/category.dart';
+import 'package:monkey/database/database.dart';
+import 'package:monkey/util/utility.dart';
 
 class Item {
   final String uid;
   String name;
   int amount;
-  Category category;
+  String categoryId;
+  Category category = Category('', '');
 
-  Item(this.uid, this.name, this.amount, this.category);
+  Item(this.uid, this.name, this.amount, this.categoryId) {
+    category = Utility.categoryList
+        .where((element) => element.uid.compareTo(categoryId) == 0)
+        .first;
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': uid,
+        'name': name,
+        'amount': amount,
+        'categoryId': categoryId
+      };
+
+  static Item fromJson(Map<String, dynamic> json) => Item(
+        json['id'],
+        json['name'],
+        json['amount'],
+        json['categoryId'],
+      );
 }
