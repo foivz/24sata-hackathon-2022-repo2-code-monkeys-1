@@ -1,4 +1,6 @@
 import 'package:monkey/pages/analitics_screen.dart';
+import 'package:monkey/pages/budget_screen.dart';
+import 'package:monkey/widgets/action_button.dart';
 import 'package:monkey/widgets/screen_select.dart';
 import 'package:flutter/material.dart';
 
@@ -21,21 +23,27 @@ class _FirstScreenState extends State<FirstScreen> {
               centerTitle: true,
               actions: <Widget>[
                 IconButton(
-                  onPressed: () {
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const Analise()),
                       );
-                    }, 
-                  icon: Icon(Icons.bar_chart_rounded)),
+                    },
+                    icon: Icon(Icons.bar_chart_rounded)),
                 IconButton(
-                  onPressed: () {}, icon: Icon(Icons.shopping_bag_outlined)),
+                    onPressed: () {}, icon: Icon(Icons.shopping_bag_outlined)),
                 IconButton(
-                  onPressed: () {}, icon: Icon(Icons.account_balance_wallet)),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BudgetScreen()));
+                    },
+                    icon: Icon(Icons.account_balance_wallet)),
               ],
             ),
-            body: const mainScreenBottomNav()),
+            floatingActionButton: const ExampleExpandableFab()),
         onWillPop: () async => false);
   }
 }
