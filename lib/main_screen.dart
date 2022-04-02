@@ -1,8 +1,11 @@
+import 'package:monkey/database/database.dart';
+import 'package:monkey/models/category.dart';
 import 'package:monkey/pages/analitics_screen.dart';
 import 'package:monkey/widgets/screen_select.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/profile_drawer.dart';
+
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
