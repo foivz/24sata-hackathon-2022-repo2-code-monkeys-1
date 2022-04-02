@@ -1,6 +1,7 @@
 import 'package:monkey/database/database.dart';
 import 'package:monkey/models/category.dart';
 import 'package:monkey/pages/budget_screen.dart';
+import 'package:monkey/pages/transaction_screen.dart';
 import 'package:monkey/widgets/action_button.dart';
 import 'package:monkey/pages/stats.dart';
 import 'package:monkey/widgets/screen_select.dart';
@@ -50,6 +51,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     icon: Icon(Icons.account_balance_wallet)),
               ],
             ),
+            body: TransactionScreen(),
             floatingActionButton: const ExampleExpandableFab()),
         onWillPop: () async => false);
   }

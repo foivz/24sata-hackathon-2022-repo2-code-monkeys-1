@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-void main() {
-  runApp(
-    const MaterialApp(
-      home: ExampleExpandableFab(),
-      debugShowCheckedModeBanner: false,
-    ),
-  );
-}
-
 @immutable
 class ExampleExpandableFab extends StatelessWidget {
   static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
@@ -36,11 +27,15 @@ class ExampleExpandableFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpandableFab(
-      distance: 110.0,
+      distance: 112.0,
       children: [
         ActionButton(
           onPressed: () => _showAction(context, 0),
           icon: const Icon(Icons.format_size),
+        ),
+        ActionButton(
+          onPressed: () => _showAction(context, 1),
+          icon: const Icon(Icons.insert_photo),
         ),
         ActionButton(
           onPressed: () => _showAction(context, 2),
@@ -111,7 +106,7 @@ class _ExpandableFabState extends State<ExpandableFab>
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: Stack(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.bottomRight,
         clipBehavior: Clip.none,
         children: [
           _buildTapToCloseFab(),
@@ -149,14 +144,14 @@ class _ExpandableFabState extends State<ExpandableFab>
   List<Widget> _buildExpandingActionButtons() {
     final children = <Widget>[];
     final count = widget.children.length;
-    final step = 90;
+    final step = 90.0 / (count - 1);
     for (var i = 0, angleInDegrees = 0.0;
         i < count;
         i++, angleInDegrees += step) {
       children.add(
         _ExpandingActionButton(
           directionInDegrees: angleInDegrees,
-          maxDistance: widget.distance - 25,
+          maxDistance: widget.distance,
           progress: _expandAnimation,
           child: widget.children[i],
         ),
@@ -212,14 +207,14 @@ class _ExpandingActionButton extends StatelessWidget {
       animation: progress,
       builder: (context, child) {
         final offset = Offset.fromDirection(
-          directionInDegrees * (math.pi / 2.0),
+          directionInDegrees * (math.pi / 180.0),
           progress.value * maxDistance,
         );
         return Positioned(
-          right: 180.0 + offset.dx,
+          right: 4.0 + offset.dx,
           bottom: 4.0 + offset.dy,
           child: Transform.rotate(
-            angle: (1.0 - progress.value) * math.pi / 3,
+            angle: (1.0 - progress.value) * math.pi / 2,
             child: child!,
           ),
         );
@@ -272,7 +267,7 @@ class FakeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 24.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
       height: isBig ? 128.0 : 36.0,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
