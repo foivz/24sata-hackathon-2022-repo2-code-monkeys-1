@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                   padding: const EdgeInsets.all(18),
+
                   child: LoginColumn()
                 ),
               ],
