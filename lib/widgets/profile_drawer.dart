@@ -26,7 +26,7 @@ class _SeparatedDrawerState extends State<SeparatedDrawer> {
               ),
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                       image: AssetImage("lib/images/blob.png")
                   )
               )
@@ -49,9 +49,10 @@ class _SeparatedDrawerState extends State<SeparatedDrawer> {
           ),
           const Divider(),
           ListTile(
-            title: const Text("Close"),
-            trailing: const Icon(Icons.cancel),
-            onTap: () => Navigator.of(context).pop(),
+            title: const Text("Sign out"),
+            trailing: const Icon(Icons.logout),
+            onTap: () =>{ Navigator.of(context).pop(),
+            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()))}
           )
         ],
       ),
