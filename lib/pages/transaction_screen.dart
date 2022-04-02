@@ -11,9 +11,26 @@ class TransactionScreen extends StatelessWidget {
           SizedBox.expand(
             child: Container(
               color: Colors.grey[200],
+              child:Text('Balance', textAlign: TextAlign.center),
+              
+              
             ),
           ),
-        _buildDraggableScrollableSheet()
+        Column(
+          children: [
+            Text(' '),
+            Text(' '),
+            Row(
+           children: [
+
+             Expanded(child: Text('Income', textAlign: TextAlign.center,)),
+             Expanded(child: Text('Expense', textAlign: TextAlign.center,)),
+           ],
+         ),
+          ],
+        ),
+        _buildDraggableScrollableSheet(),
+        
         ],
       ),
     );
