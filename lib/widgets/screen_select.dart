@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkey/pages/transaction_screen.dart';
 
 class mainScreenBottomNav extends StatefulWidget {
   const mainScreenBottomNav({ Key? key }) : super(key: key);
@@ -15,7 +16,7 @@ class _mainScreenBottomNavState extends State<mainScreenBottomNav> {
     final _tabPages = <Widget>[
       const Align(
         alignment: Alignment.center,
-        child: Text("Prvi Screen!")),
+        child: TransactionScreen()),
       const Align(
         alignment: Alignment.center,
         child: Text("Drugi Screen"),),

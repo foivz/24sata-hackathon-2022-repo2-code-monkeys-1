@@ -2,6 +2,7 @@ import 'package:monkey/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:monkey/pages/intro_screen.dart';
 import 'pages/login_screen.dart';
 import 'util/utility.dart';
 
@@ -20,9 +21,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'App',
         theme: ThemeData(
-          textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme),
+          textTheme: GoogleFonts.ubuntuTextTheme(
+            Theme.of(context).textTheme
+          ),
           primarySwatch: Colors.blue,
         ),
-        home: const LoginScreen());
+      home: const IntroScreen()
+    );
   }
 }

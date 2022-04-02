@@ -1,5 +1,6 @@
 import 'package:monkey/pages/login_column.dart';
 import 'package:flutter/material.dart';
+import 'package:monkey/pages/signup_options.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage("https://i.ibb.co/Htb0Htq/login-bg.jpg"),
+                image: AssetImage("lib/images/blob.png"),
                 fit: BoxFit.cover
               )
             ),
@@ -30,27 +31,30 @@ class _LoginScreenState extends State<LoginScreen> {
                             alignment: Alignment.topLeft,
                             child: Text("Start your path to financial freedom,",
                                 style: TextStyle(
-                                    color: Color(0xE6FFFFFF),
-                                    fontSize: 40,
-                                    fontFamily: 'Arial Rounded MT Bold'))),
+                                  color: Color(0xE6FFFFFF),
+                                  fontSize: 40,
+                                ))),
                         SizedBox(height: 16),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Text(
                             "Sign up now.",
                             style: TextStyle(
-                                color: Color(0xE6FFFFFF),
-                                fontSize: 20,
-                                fontFamily: 'Arial Rounded MT Bold'),
+                              color: Color(0xE6FFFFFF),
+                              fontSize: 20,
+                            ),
                           ),
                         )
                       ],
                     )),
                 Container(
-                  margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                  padding: const EdgeInsets.all(18),
-                  child: LoginColumn()
-                ),
+                    margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                    padding: const EdgeInsets.all(18),
+                    child: LoginColumn()),
+                Spacer(),
+                Container(
+                    margin: const EdgeInsets.all(36),
+                    child: LoginOptions()),
               ],
             )));
   }
