@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage("https://i.ibb.co/Htb0Htq/login-bg.jpg"),
+                image: AssetImage("lib/images/login-bg.jpg"),
                 fit: BoxFit.cover
               )
             ),
@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                   padding: const EdgeInsets.all(18),
+
                   child: LoginColumn()
                 ),
               ],
