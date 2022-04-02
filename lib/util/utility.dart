@@ -11,7 +11,7 @@ class Utility {
   static List<Group> groupList = List.empty(growable: true);
   static List<Category> categoryList = List.empty(growable: true);
   static List<Item> itemList = List.empty(growable: true);
-  static List<ItemList> itemListList = List.empty(growable: true);
+  static List<ItemList>? itemListList = List.empty(growable: true);
   static List<TransactionCard> transactionList = List.empty(growable: true);
   static List<Budget> budgetList = List.empty(growable: true);
 
