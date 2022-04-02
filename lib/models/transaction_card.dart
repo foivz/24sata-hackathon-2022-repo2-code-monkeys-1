@@ -36,11 +36,11 @@ class TransactionCard {
         json['categoryId'],
       );
 
-  int balanceToBase(Decimal val) {
-    return (val * Decimal.fromInt(100)) as int;
+  double balanceToBase(Decimal val) {
+    return (val * Decimal.fromInt(100)).toDouble();
   }
 
-  static Decimal baseToBalance(int val) {
-    return Decimal.fromInt(((val as double) / 100.0) as int);
+  static Decimal baseToBalance(double val) {
+    return Decimal.parse(((val) / 100.0).toString());
   }
 }

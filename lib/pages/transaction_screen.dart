@@ -1,5 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
 import 'package:monkey/models/transaction_card.dart';
 
 class TransactionScreen extends StatefulWidget {
@@ -41,30 +43,33 @@ class _TransactionScreenState extends State<TransactionScreen> {
           SizedBox.expand(
             child: Container(
               color: Colors.grey[200],
-              child: Text('Balance', textAlign: TextAlign.center),
+              child:Text('Balance', textAlign: TextAlign.center),
             ),
           ),
-          Column(
+        Container(
+          margin: const EdgeInsets.fromLTRB(36, 24, 36, 24),
+          child: Column(
             children: [
-              Text(' '),
-              Text(' '),
               Row(
                 children: [
-                  Expanded(
-                      child: Text(
-                    'Income',
-                    textAlign: TextAlign.center,
-                  )),
-                  Expanded(
-                      child: Text(
-                    'Expense',
-                    textAlign: TextAlign.center,
-                  )),
+                  GFButton(
+                    onPressed: (){},
+                    text: "Income",
+                    shape: GFButtonShape.pills,
+                  ),
+                  Spacer(),
+                  GFButton(
+                    onPressed: (){},
+                    text: "Expenses",
+                    shape: GFButtonShape.pills,
+                  )
                 ],
               ),
             ],
           ),
-          _buildDraggableScrollableSheet(),
+        ),
+        _buildDraggableScrollableSheet(),
+
         ],
       ),
     );

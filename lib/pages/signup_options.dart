@@ -4,9 +4,12 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:monkey/database/authentication/google_sign_in.dart';
 import 'package:monkey/main_screen.dart';
+import 'package:monkey/util/utility.dart';
 import 'package:provider/provider.dart';
 
-final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
+import '../models/user.dart';
+
+final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
 class LoginOptions extends StatefulWidget {
   const LoginOptions({Key? key}) : super(key: key);
@@ -15,15 +18,32 @@ class LoginOptions extends StatefulWidget {
   State<LoginOptions> createState() => _LoginOptionsState();
 }
 
+User user = User();
+
 class _LoginOptionsState extends State<LoginOptions> {
-  GoogleSignInAccount? _currentUser;
+  GoogleSignInAccount? current_user;
 
   @override
   void initState() {
-    _googleSignIn.onCurrentUserChanged.listen((account) {
+    _googleSignIn.onCurrentUserChanged.listen((account) async {
       setState(() {
-        _currentUser = account;
+        current_user = account;
       });
+      if (await _googleSignIn.isSignedIn()) {
+        if (current_user != null) {
+          user.id = current_user!.id;
+          user.name = current_user!.displayName ?? '';
+          user.email = current_user!.email;
+          user.photoUrl = current_user!.photoUrl ?? '';
+        }
+
+        Navigator.push<void>(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => FirstScreen(),
+          ),
+        );
+      }
     });
     _googleSignIn.signInSilently();
     super.initState();
@@ -41,18 +61,16 @@ class _LoginOptionsState extends State<LoginOptions> {
         SignInButton(
           Buttons.FacebookNew,
           text: "Connect with Facebook",
-          onPressed: () {},
+          onPressed: signOut,
         ),
       ],
     );
   }
 }
 
-/*
 void signOut() {
   _googleSignIn.disconnect();
 }
-*/
 
 Future<void> signIn() async {
   try {
@@ -60,5 +78,4 @@ Future<void> signIn() async {
   } catch (e) {
     print("error signing in: $e");
   }
-  print('done');
 }

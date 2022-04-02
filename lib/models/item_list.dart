@@ -6,7 +6,7 @@ import 'package:monkey/util/utility.dart';
 class ItemList {
   final String uid;
   String name;
-  List<String> itemIds;
+  List<String> itemIds = List.empty(growable: true);
   List<Item> items = List.empty(growable: true);
   String categoryId;
 
