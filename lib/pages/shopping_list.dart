@@ -7,7 +7,7 @@ const TextStyle _biggerFont = TextStyle(fontSize: 18.0);
 
 class ShopingListScreen extends StatelessWidget {
   ShopingListScreen({Key? key}) : super(key: key);
-  List<ItemList> testList = [];
+  List<ItemList> testList = List.empty(growable: true);
   //ItemList test1 = ItemList("uid", "Cokolino", Category("kat1", "Food"));
 
   Widget _buildRow(int idx) {

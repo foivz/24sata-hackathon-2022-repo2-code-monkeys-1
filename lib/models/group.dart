@@ -18,11 +18,13 @@ class Group {
 
   Group(this.uid, this.key, this.balance, this.itemListIds, this.transactionIds,
       this.budgetIds, this.subscription) {
+        /*
     for (String str in itemListIds) {
       itemList.add(Utility.itemListList
           .where((element) => element.uid.compareTo(str) == 0)
           .first);
     }
+    */
     for (String str in transactionIds) {
       transactionList.add(Utility.transactionList
           .where((element) => element.uid.compareTo(str) == 0)
