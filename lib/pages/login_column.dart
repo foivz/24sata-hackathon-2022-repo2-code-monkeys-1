@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:monkey/main_screen.dart';
 
 
 class LoginColumn extends StatefulWidget {
@@ -11,6 +12,11 @@ class LoginColumn extends StatefulWidget {
 }
 
 class _LoginColumnState extends State<LoginColumn> {
+
+  FocusNode userFocus = FocusNode();
+  FocusNode passFocus = FocusNode();
+
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -22,8 +28,12 @@ class _LoginColumnState extends State<LoginColumn> {
                   child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                       child: const TextField(
+                        style: TextStyle(
+                          color: Colors.blueAccent
+                        ),
+
                         decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.mail),
+                            prefixIcon: Icon(Icons.mail, color: Colors.white70),
                             labelText: "Type your email: ",
                             labelStyle: TextStyle(color: Colors.white70)),
                       )))),
@@ -36,8 +46,12 @@ class _LoginColumnState extends State<LoginColumn> {
                   child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                       child: const TextField(
+                        obscureText: true,
+                        style: TextStyle(
+                            color: Colors.blueAccent
+                        ),
                         decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.key),
+                            prefixIcon: Icon(Icons.key, color: Colors.white70,),
                             labelText: "Type your password: ",
                             labelStyle: TextStyle(color: Colors.white70)),
                       )))),
@@ -58,8 +72,14 @@ class _LoginColumnState extends State<LoginColumn> {
 
           ElevatedButton(
             onPressed: () {
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const FirstScreen(),
+                ),
+              );
             },
-            child: Text("Login"),
+            child: const Text("Login"),
           ),
 
 
