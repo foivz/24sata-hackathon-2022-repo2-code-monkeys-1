@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkey/pages/transaction_screen.dart';
 
 class mainScreenBottomNav extends StatefulWidget {
   const mainScreenBottomNav({ Key? key }) : super(key: key);
@@ -15,7 +16,7 @@ class _mainScreenBottomNavState extends State<mainScreenBottomNav> {
     final _tabPages = <Widget>[
       const Align(
         alignment: Alignment.center,
-        child: Text("Prvi Screen!")),
+        child: TransactionScreen()),
       const Align(
         alignment: Alignment.center,
         child: Text("Drugi Screen"),),
@@ -34,8 +35,8 @@ class _mainScreenBottomNavState extends State<mainScreenBottomNav> {
       currentIndex: _currTabIndex,
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.grey[200],
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.grey.shade600,
+      selectedItemColor: Colors.grey[600],
+      unselectedItemColor: Colors.grey[400],
       onTap: (int index) {                 
         setState(() {
           _currTabIndex = index;
