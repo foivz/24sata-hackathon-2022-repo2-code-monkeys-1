@@ -43,11 +43,6 @@ class _LoginOptionsState extends State<LoginOptions> {
           text: "Connect with Facebook",
           onPressed: () {},
         ),
-        SignInButton(
-          Buttons.Email,
-          text: "Register with e-mail",
-          onPressed: () {},
-        )
       ],
     );
   }

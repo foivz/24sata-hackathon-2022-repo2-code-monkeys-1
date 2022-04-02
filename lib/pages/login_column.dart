@@ -48,18 +48,32 @@ class _LoginColumnState extends State<LoginColumn> {
           )
         ),
         const SizedBox(height: 24),
-        ElevatedButton(
-          onPressed: () {
-            FocusScope.of(context).unfocus();
-            Navigator.push<void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const FirstScreen(),
-              ),
-            );
-          },
-          child: const Text("Login"),
-        )
+
+        Row(children: <Widget> [
+          ElevatedButton(
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const FirstScreen(),
+                ),
+              );
+            },
+            child: const Text("Login"),
+          ),
+
+          Spacer(),
+
+          SignInButton(
+            Buttons.Email,
+            text: "Register with e-mail",
+            onPressed: () {},
+          ),
+
+          Text("")
+        ],),
+
       ],
     );
   }
