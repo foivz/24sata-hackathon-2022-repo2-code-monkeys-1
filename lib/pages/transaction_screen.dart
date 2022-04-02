@@ -1,7 +1,37 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:monkey/models/transaction_card.dart';
 
-class TransactionScreen extends StatelessWidget {
+class TransactionScreen extends StatefulWidget {
   const TransactionScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TransactionScreen> createState() => _TransactionScreenState();
+}
+
+class _TransactionScreenState extends State<TransactionScreen> {
+  ListTile tileBuilder (int index, List<TransactionCard> listTile){
+    return ListTile(
+      title: Text(listTile.elementAt(index).note),
+      trailing: Text(listTile.elementAt(index).value.toString()),
+      leading: getTypeOfTransaction(index, listTile),
+      onTap: () => setState(() {
+        for(TransactionCard card in listTile){
+          Decimal temp = card.value;
+          card.value = temp;
+        }
+        TransactionScreen();
+      })
+    );
+  }
+
+  Icon getTypeOfTransaction(index, List<TransactionCard> listTile) {
+    if (listTile.elementAt(index).value.compareTo(Decimal.zero) == -1) {
+      return Icon(Icons.minimize);
+    } else {
+      return Icon(Icons.add);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,32 +41,41 @@ class TransactionScreen extends StatelessWidget {
           SizedBox.expand(
             child: Container(
               color: Colors.grey[200],
-              child:Text('Balance', textAlign: TextAlign.center),
-              
-              
+              child: Text('Balance', textAlign: TextAlign.center),
             ),
           ),
-        Column(
-          children: [
-            Text(' '),
-            Text(' '),
-            Row(
-           children: [
-
-             Expanded(child: Text('Income', textAlign: TextAlign.center,)),
-             Expanded(child: Text('Expense', textAlign: TextAlign.center,)),
-           ],
-         ),
-          ],
-        ),
-        _buildDraggableScrollableSheet(),
-        
+          Column(
+            children: [
+              Text(' '),
+              Text(' '),
+              Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                    'Income',
+                    textAlign: TextAlign.center,
+                  )),
+                  Expanded(
+                      child: Text(
+                    'Expense',
+                    textAlign: TextAlign.center,
+                  )),
+                ],
+              ),
+            ],
+          ),
+          _buildDraggableScrollableSheet(),
         ],
       ),
     );
   }
 
   DraggableScrollableSheet _buildDraggableScrollableSheet() {
+    List<TransactionCard> listTile = [
+      TransactionCard("fds", Decimal.fromInt(700), "income", "cat"),
+      TransactionCard("fds", Decimal.fromInt(-20), "e", "cat"),
+      TransactionCard("fds", Decimal.fromInt(-50), "edgfdgfd", "cat")
+    ];
     return DraggableScrollableSheet(
       initialChildSize: 0.9,
       minChildSize: 0.5,
@@ -44,21 +83,16 @@ class TransactionScreen extends StatelessWidget {
       builder: (BuildContext context, ScrollController scrollController) {
         return Container(
           decoration: const BoxDecoration(
-          color: Colors.white70,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(50),
-            topRight: Radius.circular(50)
-          )
-          ),
+              color: Colors.white70,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50), topRight: Radius.circular(50))),
           child: Scrollbar(
             child: ListView.builder(
-             controller: scrollController,
-              itemCount: 25,
+              controller: scrollController,
+              itemCount: listTile.length,
+              shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  //leading: const Icon(Icons.ac_unit),
-                  //title: Text('Item $index'),
-                );
+                return tileBuilder(index, listTile);
               },
             ),
           ),

@@ -11,9 +11,15 @@ class TransactionCard {
   Category category = Category('', '');
 
   TransactionCard(this.uid, this.value, this.note, this.categoryId) {
-    category = Utility.categoryList
-        .where((element) => element.uid.compareTo(categoryId) == 0)
-        .first;
+    //try{
+      if (Utility.categoryList.where((element) => element.uid.compareTo(categoryId) == 0).isNotEmpty)
+        category = Utility.categoryList
+            .where((element) => element.uid.compareTo(categoryId) == 0)
+            .first;
+    /*} catch (e){
+
+    }*/
+
   }
 
   Map<String, dynamic> toJson() => {
