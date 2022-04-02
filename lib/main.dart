@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'pages/login_screen.dart';
 
 void main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
