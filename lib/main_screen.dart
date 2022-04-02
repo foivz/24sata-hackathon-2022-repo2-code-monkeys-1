@@ -1,9 +1,9 @@
+import 'package:monkey/pages/analitics_screen.dart';
 import 'package:monkey/widgets/screen_select.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
-
   @override
   State<FirstScreen> createState() => _FirstScreenState();
 }
@@ -22,7 +22,14 @@ class _FirstScreenState extends State<FirstScreen> {
               centerTitle: true,
               actions: <Widget>[
                 IconButton(
-                    onPressed: () {}, icon: Icon(Icons.bar_chart_rounded)),
+                  onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Analise()),
+                      );
+                    }, 
+                  icon: Icon(Icons.bar_chart_rounded)),
                 IconButton(
                   onPressed: () {}, icon: Icon(Icons.shopify_rounded))
               ],
