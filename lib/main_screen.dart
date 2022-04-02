@@ -1,6 +1,6 @@
 import 'package:monkey/database/database.dart';
 import 'package:monkey/models/category.dart';
-import 'package:monkey/pages/analitics_screen.dart';
+import 'package:monkey/pages/stats.dart';
 import 'package:monkey/widgets/screen_select.dart';
 import 'package:flutter/material.dart';
 
@@ -26,18 +26,21 @@ class _FirstScreenState extends State<FirstScreen> {
               centerTitle: true,
               actions: <Widget>[
                 IconButton(
-                  onPressed: () {
-                      Navigator.push(
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      Navigator.push<void>(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const Analise()),
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => const Stats(),
+                        ),
                       );
-                    }, 
-                  icon: Icon(Icons.bar_chart_rounded)),
+                    },
+                  icon: const Icon(Icons.bar_chart_rounded,
+                  )),
                 IconButton(
-                  onPressed: () {}, icon: Icon(Icons.shopping_bag_outlined)),
+                  onPressed: () {}, icon: const Icon(Icons.shopping_bag_outlined)),
                 IconButton(
-                  onPressed: () {}, icon: Icon(Icons.account_balance_wallet)),
+                  onPressed: () {}, icon: const Icon(Icons.account_balance_wallet)),
               ],
             ),
             body: const mainScreenBottomNav()),
