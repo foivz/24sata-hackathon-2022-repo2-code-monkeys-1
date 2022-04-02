@@ -35,8 +35,8 @@ class _mainScreenBottomNavState extends State<mainScreenBottomNav> {
       currentIndex: _currTabIndex,
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.grey[200],
-      selectedItemColor: Colors.grey[600],
-      unselectedItemColor: Colors.grey[400],
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.grey.shade600,
       onTap: (int index) {                 
         setState(() {
           _currTabIndex = index;

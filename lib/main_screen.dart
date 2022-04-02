@@ -17,7 +17,6 @@ class _FirstScreenState extends State<FirstScreen> {
               backgroundColor: Colors.grey[200],
               foregroundColor: Colors.grey[600],
               leading: const Icon(Icons.person),
-              title: const Text("Budgettino"),
               elevation: 0,
               centerTitle: true,
               actions: <Widget>[
@@ -31,7 +30,9 @@ class _FirstScreenState extends State<FirstScreen> {
                     }, 
                   icon: Icon(Icons.bar_chart_rounded)),
                 IconButton(
-                  onPressed: () {}, icon: Icon(Icons.shopify_rounded))
+                  onPressed: () {}, icon: Icon(Icons.shopping_bag_outlined)),
+                IconButton(
+                  onPressed: () {}, icon: Icon(Icons.account_balance_wallet)),
               ],
             ),
             body: const mainScreenBottomNav()),
