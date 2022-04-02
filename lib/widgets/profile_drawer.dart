@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey/pages/login_screen.dart';
+import 'package:monkey/pages/signup_options.dart';
 
 class SeparatedDrawer extends StatefulWidget {
   const SeparatedDrawer({Key? key}) : super(key: key);
@@ -15,13 +16,13 @@ class _SeparatedDrawerState extends State<SeparatedDrawer> {
       child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
-              accountName: const Text("Jane Doe"),
-              accountEmail: const Text("janedoe@gmail.com"),
+              accountName: Text(user.name),
+              accountEmail: Text(user.email),
               currentAccountPicture: GestureDetector(
                 //OnTAP DELETED
                 //REMOVE CONST!!!
-                child: const CircleAvatar(
-                    backgroundImage: NetworkImage("https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png")
+                child: CircleAvatar(
+                    backgroundImage: NetworkImage(user.photoUrl.compareTo('') == 0 ? user.photoUrl : "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png")
                 ),
               ),
               decoration: const BoxDecoration(
