@@ -1,90 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:monkey/pages/stats.dart';
 
-class Shopping extends StatefulWidget {
-  const Shopping({Key? key}) : super(key: key);
+import 'add_new_item_list.dart';
+import 'budget_screen.dart';
+import 'items_getter.dart';
+
+class Shoping extends StatefulWidget {
+  const Shoping({Key? key}) : super(key: key);
 
   @override
-  State<Shopping> createState() => _ShoppingState();
+  State<Shoping> createState() => _ShopingState();
 }
 
-class _ShoppingState extends State<Shopping> {
+class _ShopingState extends State<Shoping> {
   @override
   Widget build(BuildContext context) {
+    const numItems = 20;
+    const _biggerFont = TextStyle(fontSize: 18.0);
+
+    Widget _buildRow(int idx) {
+      return ListTile(
+        leading: CircleAvatar(
+          child: Text('$idx'),
+        ),
+        title: Text(
+          'Item $idx',
+          style: _biggerFont,
+        ),
+        trailing: const Icon(Icons.dashboard),
+      );
+    }
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey[200],
           foregroundColor: Colors.grey[600],
-          elevation: 0,
+          title: Text('Shoping list'),
           centerTitle: true,
         ),
-      body: SwipeToDismiss()
-    );
+        body: ItemsGetter(),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: (() async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddNewItemList()),
+              );
+              setState(() {
+                
+              });
+            }),
+            label: const Text('Add item')));
   }
 }
-
-
-class SwipeToDismiss extends StatefulWidget {
-  const SwipeToDismiss({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return DismissItemList();
-  }
-}
-
-class DismissItemList extends State<SwipeToDismiss> {
-  final _items = List<String>.generate(20, (i) => "Item ${i + 1}");
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _items.length,
-      itemBuilder: (context, index) {
-        final String item = _items[index];
-        // Each Dismissible must contain a Key. Keys allow Flutter to uniquely
-        // identify Widgets.
-        return Dismissible(
-          key: Key(item),
-          // We also need to provide a function that tells our app what to do
-          // after an item has been swiped away.
-          onDismissed: (DismissDirection dir) {
-            setState(() => this._items.removeAt(index));
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  dir == DismissDirection.startToEnd
-                      ? '$item removed.'
-                      : '$item liked.',
-                ),
-                action: SnackBarAction(
-                  label: 'UNDO',
-                  onPressed: () {
-                    setState(() => this._items.insert(index, item));
-                  },
-                ),
-              ),
-            );
-          },
-          // Show a red background as the item is swiped away
-          background: Container(
-            color: Colors.red,
-            alignment: Alignment.centerLeft,
-            child: const Icon(Icons.delete),
-          ),
-          // Background when swipping from right to left
-          secondaryBackground: Container(
-            color: Colors.green,
-            alignment: Alignment.centerRight,
-            child: const Icon(Icons.thumb_up),
-          ),
-          child: ListTile(
-            title: Center(child: Text(_items[index])),
-          ),
-        );
-      },
-    );
-  }
-}
-
-
-

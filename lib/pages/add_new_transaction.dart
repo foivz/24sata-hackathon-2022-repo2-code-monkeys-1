@@ -34,6 +34,36 @@ class _AddNewTransactionState extends State<AddNewTransaction> {
           foregroundColor: Colors.grey[600],
           elevation: 0,
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => const Stats(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.bar_chart_rounded)),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Shoping()));
+                },
+                icon: const Icon(Icons.shopping_bag_outlined)),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BudgetScreen()));
+                },
+                icon: const Icon(Icons.account_balance_wallet)),
+          ],
+
         ),
         body: Container(
 
