@@ -28,8 +28,9 @@ class MyApp extends StatelessWidget {
         title: 'App',
         theme: ThemeData(
           textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme),
-          primarySwatch: Colors.blue,
+          primarySwatch:
+          Colors.blue,
         ),
-        home: const FirstScreen());
+        home: const IntroScreen());
   }
 }

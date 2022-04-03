@@ -18,7 +18,7 @@ class LoginOptions extends StatefulWidget {
   State<LoginOptions> createState() => _LoginOptionsState();
 }
 
-User user = User();
+User user = User("123", "Luka Bican", "lukabican18@gmail.com", "https://pbs.twimg.com/profile_images/1161723750464872448/Pv6vynKg_400x400.jpg");
 
 class _LoginOptionsState extends State<LoginOptions> {
   GoogleSignInAccount? current_user;
@@ -31,10 +31,10 @@ class _LoginOptionsState extends State<LoginOptions> {
       });
       if (await _googleSignIn.isSignedIn()) {
         if (current_user != null) {
-          user.id = current_user!.id;
-          user.name = current_user!.displayName ?? '';
-          user.email = current_user!.email;
-          user.photoUrl = current_user!.photoUrl ?? '';
+         // user.id = current_user!.id;
+          //user.name = current_user!.displayName ?? '';
+         // user.email = current_user!.email;
+         // user.photoUrl = current_user!.photoUrl ?? '';
         }
 
         Navigator.push<void>(
@@ -61,7 +61,14 @@ class _LoginOptionsState extends State<LoginOptions> {
         SignInButton(
           Buttons.FacebookNew,
           text: "Connect with Facebook",
-          onPressed: signOut,
+          onPressed: () {
+            Navigator.push<void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => FirstScreen(),
+              ),
+            );
+          }
           ),
       ],
     );
