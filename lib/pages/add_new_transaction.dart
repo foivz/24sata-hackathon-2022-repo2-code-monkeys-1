@@ -50,7 +50,7 @@ class _AddNewTransactionState extends State<AddNewTransaction> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Shopping()));
+                          builder: (context) => const Shoping()));
                 },
                 icon: const Icon(Icons.shopping_bag_outlined)),
             IconButton(

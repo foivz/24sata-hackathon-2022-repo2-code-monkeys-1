@@ -11,9 +11,7 @@ class Item {
   Category category = Category('', '');
 
   Item(this.uid, this.name, this.amount, this.categoryId) {
-    category = Utility.categoryList
-        .where((element) => element.uid.compareTo(categoryId) == 0)
-        .first;
+
   }
 
   Map<String, dynamic> toJson() => {

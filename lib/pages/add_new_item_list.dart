@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:monkey/models/category.dart';
 import 'package:monkey/pages/shopping_list.dart';
@@ -20,17 +21,6 @@ class _AddNewItemListState extends State<AddNewItemList> {
   final Category placeholder = new Category("uid", "name");
   final controllerName = TextEditingController();
   final controllerAmount = TextEditingController();
-
-  void addItem(String name, int amount) async {
-    List<Item> itemsForList = List.empty(growable: true);
-    name = controllerName.text;
-    amount = int.parse(controllerAmount.text);
-    if (name.isNotEmpty || name != "") {
-      Utility.database.createItemList(name, itemsForList, placeholder);
-      await Utility.refreshData();
-    }
-    Navigator.pop(context, 0);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +68,9 @@ class _AddNewItemListState extends State<AddNewItemList> {
                   keyboardType: TextInputType.number,
                 ),
                 ElevatedButton(
-                    onPressed: () async {
-                      addItem(name, amount);
+                    onPressed: () {
+                      Utility.database.createItem(controllerName.text, int.parse(controllerAmount.text), "");
+                      Navigator.pop(context);
                     },
                     child: Text("Save item!"))
               ],
