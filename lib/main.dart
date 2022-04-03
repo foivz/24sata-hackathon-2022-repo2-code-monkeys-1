@@ -1,7 +1,9 @@
+import 'package:decimal/decimal.dart';
 import 'package:monkey/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:monkey/models/category.dart';
 import 'package:monkey/pages/intro_screen.dart';
 import 'pages/login_screen.dart';
 import 'util/utility.dart';
@@ -18,15 +20,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //Utility.database.createGroup(Decimal.zero, Utility.itemListList,
+    //    Utility.transactionList, Utility.budgetList, false);
+
     return MaterialApp(
         title: 'App',
         theme: ThemeData(
-          textTheme: GoogleFonts.ubuntuTextTheme(
-            Theme.of(context).textTheme
-          ),
+          textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme),
           primarySwatch: Colors.blue,
         ),
-      home: const IntroScreen()
-    );
+        home: const FirstScreen());
   }
 }

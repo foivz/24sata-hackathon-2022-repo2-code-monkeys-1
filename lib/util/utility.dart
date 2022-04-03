@@ -11,18 +11,30 @@ class Utility {
   static List<Group> groupList = List.empty(growable: true);
   static List<Category> categoryList = List.empty(growable: true);
   static List<Item> itemList = List.empty(growable: true);
-  static List<ItemList>? itemListList = List.empty(growable: true);
+  static List<ItemList> itemListList = List.empty(growable: true);
   static List<TransactionCard> transactionList = List.empty(growable: true);
   static List<Budget> budgetList = List.empty(growable: true);
 
   static DatabaseService database = DatabaseService();
 
   static refreshData() async {
-    categoryList = await database.readCategories().first;
-    itemList = await database.readItems().first;
-    itemListList = await database.readItemLists().first;
-    transactionList = await database.readTransactions().first;
-    budgetList = await database.readBudgets().first;
-    groupList = await database.readGroups().first;
+    try {
+      budgetList = await database.readBudgets().first;
+    } catch (e) {}
+    try {
+      categoryList = await database.readCategories().first;
+    } catch (e) {}
+    try {
+      itemList = await database.readItems().first;
+    } catch (e) {}
+    try {
+      itemListList = await database.readItemLists().first;
+    } catch (e) {}
+    try {
+      transactionList = await database.readTransactions().first;
+    } catch (e) {}
+    try {
+      groupList = await database.readGroups().first;
+    } catch (e) {}
   }
 }

@@ -13,4 +13,6 @@ class Category {
         json['id'],
         json['name'],
       );
+
+  // funkcija koja vraca icon, switch prema imenu
 }

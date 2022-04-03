@@ -11,9 +11,15 @@ class TransactionCard {
   Category category = Category('', '');
 
   TransactionCard(this.uid, this.value, this.note, this.categoryId) {
-    category = Utility.categoryList
-        .where((element) => element.uid.compareTo(categoryId) == 0)
-        .first;
+    //try{
+      if (Utility.categoryList.where((element) => element.uid.compareTo(categoryId) == 0).isNotEmpty)
+        category = Utility.categoryList
+            .where((element) => element.uid.compareTo(categoryId) == 0)
+            .first;
+    /*} catch (e){
+
+    }*/
+
   }
 
   Map<String, dynamic> toJson() => {
@@ -30,11 +36,11 @@ class TransactionCard {
         json['categoryId'],
       );
 
-  int balanceToBase(Decimal val) {
-    return (val * Decimal.fromInt(100)) as int;
+  double balanceToBase(Decimal val) {
+    return (val * Decimal.fromInt(100)).toDouble();
   }
 
-  static Decimal baseToBalance(int val) {
-    return Decimal.fromInt(((val as double) / 100.0) as int);
+  static Decimal baseToBalance(double val) {
+    return Decimal.parse(((val) / 100.0).toString());
   }
 }

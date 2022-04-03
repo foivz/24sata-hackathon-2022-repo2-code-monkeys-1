@@ -6,7 +6,6 @@ import 'package:monkey/util/utility.dart';
 
 class Group {
   final String uid;
-  String key;
   Decimal balance;
   List<String> itemListIds;
   List<ItemList> itemList = List.empty(growable: true);
@@ -16,15 +15,14 @@ class Group {
   List<Budget> budgetList = List.empty(growable: true);
   bool subscription;
 
-  Group(this.uid, this.key, this.balance, this.itemListIds, this.transactionIds,
+  Group(this.uid, this.balance, this.itemListIds, this.transactionIds,
       this.budgetIds, this.subscription) {
-        /*
     for (String str in itemListIds) {
       itemList.add(Utility.itemListList
           .where((element) => element.uid.compareTo(str) == 0)
           .first);
     }
-    */
+
     for (String str in transactionIds) {
       transactionList.add(Utility.transactionList
           .where((element) => element.uid.compareTo(str) == 0)
@@ -43,7 +41,6 @@ class Group {
 
   Map<String, dynamic> toJson() => {
         'id': uid,
-        'key': key,
         'balance': balanceToBase(balance),
         'itemIds': '[${itemListIds.join(', ')}]',
         'transactionIds': '[${transactionIds.join(', ')}]',
@@ -53,7 +50,6 @@ class Group {
 
   static Group fromJson(Map<String, dynamic> json) => Group(
         json['id'],
-        json['key'],
         baseToBalance(json['balance']),
         getListOfStrings(json['itemIds']),
         getListOfStrings(json['transactionIds']),
@@ -66,11 +62,11 @@ class Group {
     return str.split(', ');
   }
 
-  int balanceToBase(Decimal val) {
-    return (val * Decimal.fromInt(100)) as int;
+  double balanceToBase(Decimal val) {
+    return (val * Decimal.fromInt(100)).toDouble();
   }
 
-  static Decimal baseToBalance(int val) {
-    return Decimal.fromInt(((val as double) / 100.0) as int);
+  static Decimal baseToBalance(double val) {
+    return Decimal.parse(((val) / 100.0).toString());
   }
 }

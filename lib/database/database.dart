@@ -7,7 +7,25 @@ import 'package:monkey/models/item.dart';
 import 'package:monkey/models/item_list.dart';
 import 'package:monkey/models/transaction_card.dart';
 
+import '../models/user.dart';
+
 class DatabaseService {
+  Future getData(String str) async {
+    List categoryList = [];
+    CollectionReference collectionRef =
+    FirebaseFirestore.instance.collection(str);
+    try {
+      await collectionRef.get().then((value) {
+        for (var res in value.docs) {
+          categoryList.add(res.data());
+        }
+      });
+      return categoryList;
+    } catch (e) {
+      print('dogodio se error!!!!!!!!!!!');
+      return null;
+    }
+  }
   final String dbName = 'database';
   final String dbCategory = 'categories';
   final String dbItem = 'items';
@@ -62,9 +80,9 @@ class DatabaseService {
 
   // items
 
-  Future createItem(String name, int amount, Category category) {
+  Future createItem(String name, int amount, String categoryId) {
     final docItem = FirebaseFirestore.instance.collection(dbItem).doc();
-    final item = Item(docItem.id, name, amount, category.uid);
+    final item = Item(docItem.id, name, amount, categoryId);
     final json = item.toJson();
     return docItem.set(json);
   }
@@ -218,10 +236,10 @@ class DatabaseService {
 
   // groups
 
-  Future createGroup(Decimal balance, String key, List<ItemList> itemList,
+  Future createGroup(Decimal balance, List<ItemList> itemList,
       List<TransactionCard> transactionList, List<Budget> budgetList,
       bool subscription) {
-    final docGroup = FirebaseFirestore.instance.collection(dbBudget).doc();
+    final docGroup = FirebaseFirestore.instance.collection(dbGroup).doc();
 
     final List<String> itemListIds = List.empty(growable: true);
     for (ItemList obj in itemList) {
@@ -236,7 +254,7 @@ class DatabaseService {
       budgetListIds.add(obj.uid);
     }
 
-    final group = Group(docGroup.id, key, balance, itemListIds, transactionListIds, budgetListIds, subscription);
+    final group = Group(docGroup.id, balance, itemListIds, transactionListIds, budgetListIds, subscription);
     final json = group.toJson();
     return docGroup.set(json);
   }
@@ -267,4 +285,19 @@ class DatabaseService {
         .doc(group.uid)
         .set(group.toJson());
   }
+
+  // users
+
+  Future createUser(String id, String name, String email, String photoUrl, String groupId) {
+    final docUser = FirebaseFirestore.instance.collection(dbBudget).doc(id);
+    final thisuser = User(id, name, email, photoUrl, groupId);
+    final json = thisuser.toJson();
+    return docUser.set(json);
+  }
+
+  Stream<List<User>> readUsers() => FirebaseFirestore.instance
+      .collection(dbGroup)
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
 }
