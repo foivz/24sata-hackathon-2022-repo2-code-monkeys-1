@@ -10,31 +10,6 @@ class BudgetScreen extends StatefulWidget {
 
 class _BudgetScreenState extends State<BudgetScreen>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      length: _kTabPages.length,
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  final _kTabPages = <Widget>[
-    const Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
-    const Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
-  ];
-  final _kTabs = <Tab>[
-    const Tab(text: 'Budget'),
-    const Tab(text: 'Goals'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +17,10 @@ class _BudgetScreenState extends State<BudgetScreen>
         appBar: AppBar(
           backgroundColor: Colors.grey[200],
           foregroundColor: Colors.grey[600],
-          bottom: TabBar(
-            labelColor: Colors.grey[600],
-            tabs: _kTabs,
-            controller: _tabController,
-          ),
+          title: Text('Budget'),
+          centerTitle: true,
         ),
-        body: TabBarView(controller: _tabController, children: _kTabPages),
+        body: Column(),
         floatingActionButton: FloatingActionButton.extended(
             onPressed: (() {
               Navigator.push<void>(
