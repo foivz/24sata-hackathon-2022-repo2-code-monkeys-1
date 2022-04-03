@@ -40,7 +40,7 @@ class IntroScreenState extends State<IntroScreen> {
         description:
         "Budget together with your family, track their expenses and set goals.",
         pathImage: "lib/images/family.png",
-        backgroundColor: const Color(0xff90FC90),
+        backgroundColor: const Color(0xff009F6B),
       ),
     );
   }

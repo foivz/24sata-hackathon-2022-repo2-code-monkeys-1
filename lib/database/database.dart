@@ -47,7 +47,7 @@ class DatabaseService {
   Future createCategory(String name) {
     final docCategory = FirebaseFirestore.instance.collection(dbCategory).doc();
     final category = Category(docCategory.id, name);
-
+    
     final json = category.toJson();
     return docCategory.set(json);
   }
@@ -239,11 +239,8 @@ class DatabaseService {
 
   // groups
 
-  Future createGroup(
-      Decimal balance,
-      List<ItemList> itemList,
-      List<TransactionCard> transactionList,
-      List<Budget> budgetList,
+  Future createGroup(Decimal balance, List<ItemList> itemList,
+      List<TransactionCard> transactionList, List<Budget> budgetList,
       bool subscription) {
     final docGroup = FirebaseFirestore.instance.collection(dbGroup).doc();
 
@@ -260,8 +257,7 @@ class DatabaseService {
       budgetListIds.add(obj.uid);
     }
 
-    final group = Group(docGroup.id, balance, itemListIds, transactionListIds,
-        budgetListIds, subscription);
+    final group = Group(docGroup.id, balance, itemListIds, transactionListIds, budgetListIds, subscription);
     final json = group.toJson();
     return docGroup.set(json);
   }

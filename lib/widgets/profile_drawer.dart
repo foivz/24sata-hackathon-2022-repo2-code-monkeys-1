@@ -22,39 +22,24 @@ class _SeparatedDrawerState extends State<SeparatedDrawer> {
                 //OnTAP DELETED
                 //REMOVE CONST!!!
                 child: CircleAvatar(
-                    backgroundImage: NetworkImage(user.photoUrl.compareTo('') == 0 ? user.photoUrl : "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png")
+                  backgroundImage: NetworkImage(user.photoUrl.compareTo('') == 0
+                      ? user.photoUrl
+                      : "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png"),
                 ),
               ),
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage("lib/images/blob.png")
-                  )
-              )
-          ),
-          ListTile(
-              title: const Text("Settings"),
-              trailing: const Icon(Icons.settings),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()));
-              }
-          ),
-          ListTile(
-              title: const Text("Groups"),
-              trailing: const Icon(Icons.group),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()));
-              }
-          ),
+                      image: AssetImage("lib/images/blob.png")))),
           const Divider(),
           ListTile(
-            title: const Text("Sign out"),
-            trailing: const Icon(Icons.logout),
-            onTap: () =>{ Navigator.of(context).pop(),
-            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()))}
-          )
+              title: const Text("Sign out"),
+              trailing: const Icon(Icons.logout),
+              onTap: () => {
+                    Navigator.of(context).pop(),
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => const LoginScreen()))
+                  })
         ],
       ),
     );

@@ -12,12 +12,6 @@ import 'util/utility.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  //await Utility.refreshData();
-  Utility.database.createCategory('Food');
-  Utility.database.createCategory('Shopping');
-  Utility.database.createCategory('Life');
-  Utility.database.createCategory('Transportation');
-
   runApp(const MyApp());
 }
 
@@ -26,6 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     //Utility.database.createGroup(Decimal.zero, Utility.itemListList,
     //    Utility.transactionList, Utility.budgetList, false);
 
