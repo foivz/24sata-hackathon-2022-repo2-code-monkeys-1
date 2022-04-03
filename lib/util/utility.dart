@@ -19,9 +19,6 @@ class Utility {
 
   static refreshData() async {
     try {
-      budgetList = await database.readBudgets().first;
-    } catch (e) {}
-    try {
       categoryList = await database.readCategories().first;
     } catch (e) {}
     try {

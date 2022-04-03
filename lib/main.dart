@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
-import 'package:monkey/main_screen.dart';
+import 'package:monkey/database/database.dart';
+import 'package:monkey/pages/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +12,12 @@ import 'util/utility.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await Utility.refreshData();
+  //await Utility.refreshData();
+  Utility.database.createCategory('Food');
+  Utility.database.createCategory('Shopping');
+  Utility.database.createCategory('Life');
+  Utility.database.createCategory('Transportation');
+
   runApp(const MyApp());
 }
 
@@ -20,7 +26,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //Utility.database.createGroup(Decimal.zero, Utility.itemListList,
     //    Utility.transactionList, Utility.budgetList, false);
 
