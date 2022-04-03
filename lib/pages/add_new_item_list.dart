@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:monkey/models/category.dart';
 import 'package:monkey/pages/shopping_list.dart';
+import 'package:monkey/pages/stats.dart';
 import 'package:monkey/util/utility.dart';
 
 import '../models/item.dart';
-import 'analitics_screen.dart';
 
 class AddNewItemList extends StatefulWidget {
   const AddNewItemList({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _AddNewItemListState extends State<AddNewItemList> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Analise()),
+                    MaterialPageRoute(builder: (context) => const Stats()),
                   );
                 },
                 icon: Icon(Icons.bar_chart_rounded)),
