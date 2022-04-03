@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:monkey/main_screen.dart';
+import 'package:monkey/pages/main_screen.dart';
 
 class LoginColumn extends StatefulWidget {
   const LoginColumn({Key? key}) : super(key: key);

@@ -9,7 +9,7 @@ import 'package:monkey/pages/stats.dart';
 import 'package:monkey/widgets/screen_select.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/profile_drawer.dart';
+import '../widgets/profile_drawer.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);

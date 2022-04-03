@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:monkey/models/item_list.dart';
+import 'package:monkey/pages/stats.dart';
 import '../util/utility.dart';
 import 'add_new_item_list.dart';
-import 'analitics_screen.dart';
 
 const int numItems = 20;
 const TextStyle _biggerFont = TextStyle(fontSize: 18.0);
@@ -49,7 +49,7 @@ class _ShopingListScreenState extends State<ShopingListScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Analise()),
+                    MaterialPageRoute(builder: (context) => const Stats()),
                   );
                 },
                 icon: Icon(Icons.bar_chart_rounded)),

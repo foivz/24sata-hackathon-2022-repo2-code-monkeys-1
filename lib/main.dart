@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
-import 'package:monkey/main_screen.dart';
+import 'package:monkey/database/database.dart';
+import 'package:monkey/pages/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +12,6 @@ import 'util/utility.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  //await Utility.refreshData();
   runApp(const MyApp());
 }
 

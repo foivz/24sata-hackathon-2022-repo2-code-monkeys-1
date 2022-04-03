@@ -10,10 +10,11 @@ import 'package:monkey/models/transaction_card.dart';
 import '../models/user.dart';
 
 class DatabaseService {
+
   Future getData(String str) async {
     List categoryList = [];
     CollectionReference collectionRef =
-    FirebaseFirestore.instance.collection(str);
+      FirebaseFirestore.instance.collection(str);
     try {
       await collectionRef.get().then((value) {
         for (var res in value.docs) {
@@ -26,6 +27,7 @@ class DatabaseService {
       return null;
     }
   }
+
   final String dbName = 'database';
   final String dbCategory = 'categories';
   final String dbItem = 'items';
@@ -202,7 +204,7 @@ class DatabaseService {
 
   Future createBudget(String name) {
     final docBudget = FirebaseFirestore.instance.collection(dbBudget).doc();
-    final budget = Budget(docBudget.id, name);
+    final budget = Budget(docBudget.id, name, amount, categoryId);
     final json = budget.toJson();
     return docBudget.set(json);
   }
