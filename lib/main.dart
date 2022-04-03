@@ -12,12 +12,6 @@ import 'util/utility.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  //await Utility.refreshData();
-  Utility.database.createCategory('Food');
-  Utility.database.createCategory('Shopping');
-  Utility.database.createCategory('Life');
-  Utility.database.createCategory('Transportation');
-
   runApp(const MyApp());
 }
 
@@ -35,6 +29,6 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme),
           primarySwatch: Colors.blue,
         ),
-        home: const IntroScreen());
+        home: const FirstScreen());
   }
 }
