@@ -35,6 +35,7 @@ class DatabaseService {
   final String dbTransactionCard = 'transactions';
   final String dbBudget = 'budgets';
   final String dbGroup = 'groups';
+  final String dbUser = 'users';
 
   DatabaseService();
 
@@ -290,16 +291,24 @@ class DatabaseService {
 
   // users
 
-  Future createUser(String id, String name, String email, String photoUrl, String groupId) {
-    final docUser = FirebaseFirestore.instance.collection(dbBudget).doc(id);
-    final thisuser = User(id, name, email, photoUrl, groupId);
+  Future createUser(
+      String id, String name, String email, String photoUrl, double balance) {
+    final docUser = FirebaseFirestore.instance.collection(dbUser).doc(id);
+    final thisuser = User(id, name, email, photoUrl, balance);
     final json = thisuser.toJson();
     return docUser.set(json);
   }
 
   Stream<List<User>> readUsers() => FirebaseFirestore.instance
-      .collection(dbGroup)
+      .collection(dbUser)
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
+
+  Future updateUserById(User user) async {
+    FirebaseFirestore.instance
+        .collection(dbUser)
+        .doc(user.id)
+        .set(user.toJson());
+  }
 }

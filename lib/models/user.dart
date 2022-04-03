@@ -8,29 +8,21 @@ class User {
   String name;
   String email;
   String photoUrl;
-  String groupId;
-  Group group = Group('', Decimal.zero, List.empty(), List.empty(),
-  List.empty(), false);
+  double balance;
 
   User(
       [this.id = '',
       this.name = '',
       this.email = '',
       this.photoUrl = '',
-      this.groupId = '']) {
-    try {
-      if (Utility.groupList.where((element) => element.uid == groupId).isNotEmpty)
-        group = Utility.groupList.where((element) => element.uid == groupId).first;
-    } catch (e) {}
-    
-  }
+      this.balance = 0]);
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
         'email': email,
         'photoUrl': photoUrl,
-        'groupId': groupId,
+        'balance': balance,
       };
 
   static User fromJson(Map<String, dynamic> json) => User(

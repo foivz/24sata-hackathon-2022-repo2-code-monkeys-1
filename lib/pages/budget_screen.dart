@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkey/pages/budget_getter.dart';
 import 'package:monkey/pages/create_budget_screen.dart';
 
 class BudgetScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _BudgetScreenState extends State<BudgetScreen>
           title: Text('Budget'),
           centerTitle: true,
         ),
-        body: Column(),
+        body: Test(),
         floatingActionButton: FloatingActionButton.extended(
             onPressed: (() {
               Navigator.push<void>(

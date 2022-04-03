@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey/pages/login_screen.dart';
 import 'package:monkey/pages/signup_options.dart';
-import 'package:monkey/pages/tips_and_tricks.dart';
 
 class SeparatedDrawer extends StatefulWidget {
   const SeparatedDrawer({Key? key}) : super(key: key);
@@ -32,30 +31,6 @@ class _SeparatedDrawerState extends State<SeparatedDrawer> {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage("lib/images/blob.png")))),
-          ListTile(
-              title: const Text("Settings"),
-              trailing: const Icon(Icons.settings),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const LoginScreen()));
-              }),
-          ListTile(
-              title: const Text("Groups"),
-              trailing: const Icon(Icons.group),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const LoginScreen()));
-              }),
-          ListTile(
-              title: const Text("Tips& ricks"),
-              trailing: const Icon(Icons.info_outline),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const Tips()));
-              }),
           const Divider(),
           ListTile(
               title: const Text("Sign out"),

@@ -30,6 +30,6 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme),
           primarySwatch: Colors.blue,
         ),
-        home: const FirstScreen());
+        home: const IntroScreen());
   }
 }
