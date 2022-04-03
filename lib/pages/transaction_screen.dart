@@ -46,7 +46,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
     /*for (TransactionCard t in widget.listT) {
       balance = balance + t.value;
     }*/
-    return "$balance kn";
+    return "${user.balance} kn";
   }
 
   @override
@@ -78,7 +78,6 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 ),
 
                 SizedBox(height: 16),
-
                 const Text("Balance",
                   style: TextStyle(
                     fontSize: 36,

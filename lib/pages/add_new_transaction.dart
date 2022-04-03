@@ -20,8 +20,8 @@ class _AddNewTransactionState extends State<AddNewTransaction> {
   TextEditingController controllerNote = TextEditingController();
   TextEditingController controllerAmount = TextEditingController();
   void saveValues() {
-    Utility.database.createTransaction(Decimal.parse(controllerAmount.text),
-        controllerNote.text, Category('', ''));
+      Utility.database.createTransaction(Decimal.parse(controllerAmount.text),
+          controllerNote.text, Category('', ''));
     Navigator.pop(context);
   }
 
