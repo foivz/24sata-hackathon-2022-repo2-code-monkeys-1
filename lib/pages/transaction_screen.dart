@@ -1,8 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
-
+import 'package:monkey/pages/signup_options.dart';
 import 'package:monkey/models/transaction_card.dart';
 import 'package:monkey/pages/transaction_geter.dart';
 
@@ -53,52 +52,55 @@ class _TransactionScreenState extends State<TransactionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Column(children: <Widget>[
-            Container(
-              alignment: AlignmentDirectional.center,
-                color: Colors.white,
-              child: Text(
-                'Balance',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 45),
+      body: Column(
+        children: <Widget> [
+          Container(
+            width: 700,
+            padding: EdgeInsets.fromLTRB(36, 8, 36, 36),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("lib/images/peaks.png"),
+                fit: BoxFit.fill
               ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(8),
+                bottomRight: Radius.circular(8)
+
+              )
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.white,
-              child: Text(
-                getBalance(),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 45),
-              ),
-            ),
-          ]),
-          _buildDraggableScrollableSheet(),
+            child: Column(
+
+              children: <Widget> [
+                Text("👋 ${user.name}, welcome!",
+                  style: TextStyle(
+                    color: Colors.white70
+                  ),
+                ),
+
+                SizedBox(height: 16),
+
+                const Text("Balance",
+                  style: TextStyle(
+                    fontSize: 36,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(getBalance(),
+                  style: const TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                )
+              ],
+            )
+          ),
+          Expanded(child: Test(),
+          )
         ],
       ),
     );
   }
 
-  DraggableScrollableSheet _buildDraggableScrollableSheet() {
-
-
-    return DraggableScrollableSheet(
-      initialChildSize: 0.8,
-      minChildSize: 0.8,
-      maxChildSize: 0.8,
-      builder: (BuildContext context, ScrollController scrollController) {
-        return Container(
-          decoration: const BoxDecoration(
-              color: Colors.white70,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50), topRight: Radius.circular(50))),
-          child: Scrollbar(
-            child: Test()
-            ),
-          );
-      },
-    );
-  }
 }

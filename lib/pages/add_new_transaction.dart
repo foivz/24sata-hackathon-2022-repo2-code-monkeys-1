@@ -28,45 +28,24 @@ class _AddNewTransactionState extends State<AddNewTransaction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.grey[200],
           foregroundColor: Colors.grey[600],
           elevation: 0,
           centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-                onPressed: () {
-                  FocusScope.of(context).unfocus();
-                  Navigator.push<void>(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const Stats(),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.bar_chart_rounded)),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Shopping()));
-                },
-                icon: const Icon(Icons.shopping_bag_outlined)),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const BudgetScreen()));
-                },
-                icon: const Icon(Icons.account_balance_wallet)),
-          ],
         ),
         body: Container(
+
+          decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage("lib/images/peaks.png"),
+              fit: BoxFit.fill
+            )
+          ),
           child: Column(
             children: [
               Container(
+                margin: EdgeInsets.fromLTRB(36, 16, 36, 8),
                   child: TextField(
                     controller: controllerNote,
                     decoration:
@@ -76,6 +55,7 @@ class _AddNewTransactionState extends State<AddNewTransaction> {
                   padding: EdgeInsets.all(10)),
               const Divider(),
               Container(
+                margin: EdgeInsets.fromLTRB(36, 8, 36, 16),
                   child: TextField(
                     controller: controllerAmount,
                     keyboardType: TextInputType.number,
@@ -85,7 +65,7 @@ class _AddNewTransactionState extends State<AddNewTransaction> {
                   ),
                   color: Colors.grey.shade300,
                   padding: EdgeInsets.all(10)),
-            ElevatedButton(onPressed: () {saveValues();}, child: Text("Save"))],
+            ElevatedButton(onPressed: () {saveValues();}, child: Text("Save transaction"))],
           ),
         ));
   }
