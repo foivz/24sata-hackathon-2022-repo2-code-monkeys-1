@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
 
 class TransactionScreen extends StatelessWidget {
   const TransactionScreen({Key? key}) : super(key: key);
@@ -12,25 +14,32 @@ class TransactionScreen extends StatelessWidget {
             child: Container(
               color: Colors.grey[200],
               child:Text('Balance', textAlign: TextAlign.center),
-              
-              
             ),
           ),
-        Column(
-          children: [
-            Text(' '),
-            Text(' '),
-            Row(
-           children: [
-
-             Expanded(child: Text('Income', textAlign: TextAlign.center,)),
-             Expanded(child: Text('Expense', textAlign: TextAlign.center,)),
-           ],
-         ),
-          ],
+        Container(
+          margin: const EdgeInsets.fromLTRB(36, 24, 36, 24),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  GFButton(
+                    onPressed: (){},
+                    text: "Income",
+                    shape: GFButtonShape.pills,
+                  ),
+                  Spacer(),
+                  GFButton(
+                    onPressed: (){},
+                    text: "Expenses",
+                    shape: GFButtonShape.pills,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
         _buildDraggableScrollableSheet(),
-        
+
         ],
       ),
     );
