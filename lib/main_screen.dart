@@ -1,5 +1,6 @@
 import 'package:monkey/database/database.dart';
 import 'package:monkey/models/category.dart';
+import 'package:monkey/pages/add_new_transaction.dart';
 import 'package:monkey/pages/budget_screen.dart';
 import 'package:monkey/pages/shopping.dart';
 import 'package:monkey/pages/transaction_screen.dart';
@@ -61,7 +62,13 @@ class _FirstScreenState extends State<FirstScreen> {
 
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-
+              FocusScope.of(context).unfocus();
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const AddNewTransaction(),
+                ),
+              );
             },
             backgroundColor: Colors.blue,
             child: const Icon(Icons.add),

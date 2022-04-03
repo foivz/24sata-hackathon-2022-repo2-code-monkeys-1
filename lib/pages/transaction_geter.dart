@@ -37,7 +37,7 @@ Widget buildItems(dataList) => ListView.separated(
       title: Text(
         dataList[index]['note'],
       ),
-      subtitle: Text("${dataList[index]['value']} kn",
+      subtitle: Text("${dataList[index]['value']/100} kn",
       ),
     );
   },

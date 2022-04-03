@@ -11,7 +11,7 @@ import 'util/utility.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await Utility.refreshData();
+  //await Utility.refreshData();
   runApp(const MyApp());
 }
 
