@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     //Utility.database.createGroup(Decimal.zero, Utility.itemListList,
     //    Utility.transactionList, Utility.budgetList, false);
 
