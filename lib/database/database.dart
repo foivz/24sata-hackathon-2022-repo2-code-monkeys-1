@@ -202,7 +202,7 @@ class DatabaseService {
 
   // budgets
 
-  Future createBudget(String name) {
+  Future createBudget(String name, Decimal amount, String categoryId) {
     final docBudget = FirebaseFirestore.instance.collection(dbBudget).doc();
     final budget = Budget(docBudget.id, name, amount, categoryId);
     final json = budget.toJson();

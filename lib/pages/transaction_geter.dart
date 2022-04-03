@@ -38,6 +38,9 @@ Widget buildItems(dataList) => ListView.separated(
         dataList[index]['note'],
       ),
       subtitle: Text("${dataList[index]['value']/100} kn",
+          style: TextStyle(
+            color: dataList[index]['value'] < 0 ? Color(0xFFAF3B6E) : Color(0xFF21FA90)
+          ),
       ),
     );
   },
