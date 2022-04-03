@@ -10,6 +10,22 @@ import 'package:monkey/models/transaction_card.dart';
 import '../models/user.dart';
 
 class DatabaseService {
+  Future getData(String str) async {
+    List categoryList = [];
+    CollectionReference collectionRef =
+    FirebaseFirestore.instance.collection(str);
+    try {
+      await collectionRef.get().then((value) {
+        for (var res in value.docs) {
+          categoryList.add(res.data());
+        }
+      });
+      return categoryList;
+    } catch (e) {
+      print('dogodio se error!!!!!!!!!!!');
+      return null;
+    }
+  }
   final String dbName = 'database';
   final String dbCategory = 'categories';
   final String dbItem = 'items';
