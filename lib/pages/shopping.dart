@@ -40,11 +40,14 @@ class _ShopingState extends State<Shoping> {
         ),
         body: ItemsGetter(),
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: (() {
-              Navigator.push(
+            onPressed: (() async {
+              await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const AddNewItemList()),
               );
+              setState(() {
+                
+              });
             }),
             label: const Text('Add item')));
   }

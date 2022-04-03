@@ -68,8 +68,8 @@ class _AddNewItemListState extends State<AddNewItemList> {
                   keyboardType: TextInputType.number,
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      Utility.database.createItem(controllerName.text, int.parse(controllerAmount.text), "");
+                    onPressed: () async {
+                      await Utility.database.createItem(controllerName.text, int.parse(controllerAmount.text), "");
                       Navigator.pop(context);
                     },
                     child: Text("Save item!"))

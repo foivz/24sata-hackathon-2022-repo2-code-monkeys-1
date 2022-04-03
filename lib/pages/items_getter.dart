@@ -40,7 +40,7 @@ Widget buildItems(dataList) => ListView.separated(
       ),
       subtitle: Text("Amount: ${dataList[index]['amount']}"),
       trailing: IconButton(icon: Icon(Icons.delete), onPressed: () {
-        Utility.database.deleteItemById(dataList[index]['id']);
+         Utility.database.deleteItemById(dataList[index]['id']);
       },),
     );
   },

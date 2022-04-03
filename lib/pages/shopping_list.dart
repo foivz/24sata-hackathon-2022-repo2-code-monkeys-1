@@ -16,24 +16,23 @@ class ShopingListScreen extends StatefulWidget {
 
 class _ShopingListScreenState extends State<ShopingListScreen> {
   List<ItemList> itemListList = List.empty(growable: true);
-  void updateList(){
+  void updateList() {
     setState(() {
       itemListList = Utility.itemListList;
     });
   }
 
-
   Widget _buildRow(int idx) {
     return Card(
         child: ListTile(
-          leading: CircleAvatar(
-            child: Text('$idx'),
-          ),
-          title: Text(
-            'Item $idx',
-            style: _biggerFont,
-          ),
-        ));
+      leading: CircleAvatar(
+        child: Text('$idx'),
+      ),
+      title: Text(
+        'Item $idx',
+        style: _biggerFont,
+      ),
+    ));
   }
 
   @override
@@ -72,20 +71,16 @@ class _ShopingListScreenState extends State<ShopingListScreen> {
             if (i == 0) {
               return Card(
                   child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddNewItemList())).then((value) => {
-                        if(value!=null)
-                          {
-                            updateList()
-                          }
-                      });
-                    },
-                    leading: Icon(Icons.add),
-                    title: Text('Add new shoping list', style: _biggerFont),
-                  ));
+                onTap: () async {
+                  await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddNewItemList()));
+                  updateList();
+                },
+                leading: Icon(Icons.add),
+                title: Text('Add new shoping list', style: _biggerFont),
+              ));
             } else
               return _buildRow(i);
           },
