@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkey/pages/create_budget_screen.dart';
 
 class BudgetScreen extends StatefulWidget {
   const BudgetScreen({Key? key}) : super(key: key);
@@ -47,6 +48,16 @@ class _BudgetScreenState extends State<BudgetScreen>
             controller: _tabController,
           ),
         ),
-        body: TabBarView(controller: _tabController, children: _kTabPages));
+        body: TabBarView(controller: _tabController, children: _kTabPages),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: (() {
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const CreateBudgetScreen(),
+                ),
+              );
+            }),
+            label: const Text('Add Budget')));
   }
 }
