@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:monkey/database/authentication/google_sign_in.dart';
-import 'package:monkey/main_screen.dart';
+import 'package:monkey/pages/main_screen.dart';
 import 'package:monkey/util/utility.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +62,7 @@ class _LoginOptionsState extends State<LoginOptions> {
           Buttons.FacebookNew,
           text: "Connect with Facebook",
           onPressed: signOut,
-        ),
+          ),
       ],
     );
   }
