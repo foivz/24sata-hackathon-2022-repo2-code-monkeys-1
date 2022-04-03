@@ -34,12 +34,13 @@ Widget buildItems(dataList) => ListView.separated(
   separatorBuilder: (BuildContext context, int index) => const Divider(),
   itemBuilder: (BuildContext context, int index) {
     return ListTile(
+      leading: dataList[index]['value'] < 0 ? const Icon(Icons.minimize, color: Color(0xFFAF3B6E)) : const Icon(Icons.add, color: Color(0xFF009F6B),),
       title: Text(
         dataList[index]['note'],
       ),
       subtitle: Text("${dataList[index]['value']/100} kn",
           style: TextStyle(
-            color: dataList[index]['value'] < 0 ? Color(0xFFAF3B6E) : Color(0xFF21FA90)
+            color: dataList[index]['value'] < 0 ? Color(0xFFAF3B6E) : Color(0xFF009F6B)
           ),
       ),
     );
